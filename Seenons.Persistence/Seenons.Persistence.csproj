@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\GetTimeSlotsForPostalCode.sql" />
+    <None Remove="Scripts\GetTimeSlotsForPostalCodeAndDays.sql" />
+    <None Remove="Scripts\GetWasteStreams.sql" />
+    <None Remove="Scripts\GetWasteStreamSizes.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\GetTimeSlotsForPostalCode.sql" />
+    <EmbeddedResource Include="Scripts\GetTimeSlotsForPostalCodeAndDays.sql" />
+    <EmbeddedResource Include="Scripts\GetWasteStreams.sql" />
+    <EmbeddedResource Include="Scripts\GetWasteStreamSizes.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Npgsql" Version="6.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seenons\Seenons.csproj" />
+  </ItemGroup>
+
+</Project>

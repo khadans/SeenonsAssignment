@@ -1,0 +1,43 @@
+version: '3.4'
+ 
+services:
+  postgresql_database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=seenonsDb
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+     
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    ports:
+      - "5050:80"
+    restart: always
+    volumes:
+      - pgadmin:/root/.pgadmin
+
+  api:
+    build:
+      context: .
+      dockerfile: Seenons.WebApi\Dockerfile
+    depends_on: 
+      - postgresql_database
+    ports:
+      - "5000:80"
+    restart: always    
+    environment:
+      DbConnectionString: "host=postgresql_database;port=5432;database=seenonsDb;username=admin;password=admin1234"
+
+volumes:
+  postgres-data:
+  pgadmin:
