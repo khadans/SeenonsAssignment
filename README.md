@@ -7,7 +7,6 @@ This web api returns waste streams information with availability for pickup on s
 - Framework: .Net Core 3.1
 - IDE: Visual Studio 2022
 - Storage: Postgresql
-- Hosting: Docker, IIS etc
 
 ## Architecture
 
@@ -18,13 +17,13 @@ This web api returns waste streams information with availability for pickup on s
 - `Seenons.WebApi` is responsible for all endpoints
 - `Seenons` is domain project that contains ports, use cases, models etc
 - `Seenons.Persistence` is responsible for storing data in the db
-- All above projects has its own test projects with unit/integration tests
+- All above projects have their own test projects with unit/integration tests
 
 ## Getting started
 
 ### Installation
 
-Run docker command from root folder:
+Run docker command from the root folder:
 
 `docker-compose up` 
 
