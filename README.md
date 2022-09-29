@@ -16,7 +16,7 @@ This web api returns waste streams information with availability for pickup on s
 
 - `Seenons.WebApi` is responsible for all endpoints
 - `Seenons` is domain project that contains ports, use cases, models etc
-- `Seenons.Persistence` is responsible for storing data in the db
+- `Seenons.Persistence` is responsible for the interaction with the database
 - All above projects have their own test projects with unit/integration tests
 
 ## Getting started
